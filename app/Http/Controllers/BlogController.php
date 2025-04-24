@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
-    // Show all blogs
+    
     public function index()
     {
         $blogs = Blog::all();
