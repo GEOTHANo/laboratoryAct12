@@ -10,50 +10,47 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function showRegister() {
-        return view('login');
+        return view('register'); // Correct view for registration
     }
- 
- 
+
+    public function showLogin() {
+        return view('login'); // Correct view for login
+    }
+
     public function register(Request $request) {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed'
         ]);
- 
- 
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
- 
- 
+
         return redirect('/login')->with('success', 'Registered successfully. Please login.');
     }
- 
- 
-    public function showLogin() {
-        return view('register');
-    }
- 
- 
+
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
- 
- 
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/dashboard');
+            
+            
+        
+            return redirect()->route('blogs.index');
+
         }
- 
- 
+        
+
         return back()->withErrors([
-            'email' => 'Invalid credentials.',
+            'login' => 'Invalid email or password.', // Generic error message
         ]);
     }
- 
- 
+
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
