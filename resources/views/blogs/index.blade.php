@@ -12,7 +12,7 @@
     <div class="container">
         <div class="card shadow-lg border-0 mt-5">
             <div class="card-header">
-                <h1>CREATE YOUR OWN BLOG</h1>
+                <h1>CREATE YOUR OWN NEW BLOG</h1>
             </div>
             <div class="card-body">
                 <form action="{{ route('blogs.store') }}" method="POST">

@@ -12,7 +12,7 @@
     <div class="container">
         <div class="card shadow-lg border-0 mt-5">
             <div class="card-header">
-                <h1>Edit Blog</h1>
+                <h1>Edit THE BLOG</h1>
             </div>
             <div class="card-body">
                 <form action="{{ route('blogs.update', $post->id) }}" method="POST">
